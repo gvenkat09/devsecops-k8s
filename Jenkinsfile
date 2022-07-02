@@ -37,9 +37,9 @@ pipeline {
       steps {
         withSonarQubeEnv('sonarqube') {
           sh "mvn sonar:sonar -Dsonar.projectKey=numeric-application -Dsonar.host.url=http://15.206.37.128:9000"
-          sh "sleep 60"
-        //}
-        //timeout(time: 1, unit: 'MINUTES') {
+          //sh "sleep 60"
+        }
+        timeout(time: 1, unit: 'MINUTES') {
           script {
 
             def qg = waitForQualityGate() // Reuse taskId previously collected by withSonarQubeEnv
